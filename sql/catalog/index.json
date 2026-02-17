@@ -1,0 +1,15 @@
+[
+  {
+    "id": "vorgaenge_menge_summiert",
+    "titel": "Vorgänge – Menge summiert",
+    "beschreibung": "Summiert Mengen nach Zeile1–6, Filter über Access definierbar.",
+    "datei": "sql/vorgaenge_menge_summiert.sql",
+    "raw": "https://raw.githubusercontent.com/wollweise/AbfrageGenerator/main/sql/vorgaenge_menge_summiert.sql",
+    "parameter": [
+      "FilterEins",
+      "FilterZwei",
+      "FilterDrei"
+    ]
+  }
+]
+``
