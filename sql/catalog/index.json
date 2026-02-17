@@ -1,16 +1,47 @@
 [
   {
     "id": "vorgaenge_menge_summiert",
-    "titel": "Vorgänge – Menge summiert",
     "kategorie": "Aufträge",
-    "version": "1.0.0",
-    "raw": "https://raw.githubusercontent.com/wollweise/AbfrageGenerator/main/sql/vorgaenge_menge_summiert.sql",
-    "beschreibung": "Summiert Mengen nach Zeile1–6. Filter: Start/Ende (Datum), Kundengruppe.",
-    "parameter": [
-      "FilterEins",
-      "FilterZwei",
-      { "name": "FilterDrei", "typ": "number", "label": "Kundengruppe", "default": "99" }
-    ]
+    "abfrageBezeichnung": "Vorgänge – Menge summiert",
+    "abfrageBeschreibung": "Summiert Mengen nach Zeile1–6. Filter 1 (Datum) im US-Format MM/TT/JJJJ.",
+    "sql": "SELECT\n    tblAdressen.Kundengruppe,\n    tblAufpos.Zeile1,\n    tblAufpos.Zeile2,\n    tblAufpos.Zeile3,\n    tblAufpos.Zeile4,\n    tblAufpos.Zeile5,\n    tblAufpos.Zeile6,\n    SUM(tblAufpos.Menge) AS SummeMenge\nFROM\n    (tblAufkopf\n        INNER JOIN tblAufpos ON tblAufkopf.Intern = tblAufpos.Intern)\n    INNER JOIN tblAdressen ON tblAufkopf.Adresse = tblAdressen.Adresse\nWHERE\n    tblAufkopf.AktuellesDatumVorgang FilterEins\n    AND tblAufkopf.Bearbeitungsindex FilterZwei\n    AND tblAdressen.Adresse FilterDrei\nGROUP BY\n    tblAdressen.Kundengruppe,\n    tblAufpos.Zeile1,\n    tblAufpos.Zeile2,\n    tblAufpos.Zeile3,\n    tblAufpos.Zeile4,\n    tblAufpos.Zeile5,\n    tblAufpos.Zeile6\nORDER BY\n    tblAdressen.Kundengruppe,\n    tblAufpos.Zeile1;\n\n/* Datum stets im MM/TT/JJJJ-Format angeben. */",
+
+    "FilterEins": "BETWEEN #01/01/2026# AND #02/28/2026#",
+    "FilterZwei": "IN (4, 5, 6, 7, 8)",
+    "FilterDrei": "= 699",
+    "FilterVier": "",
+    "FilterFuenf": "",
+
+    "FilterEinsOriginal": "BETWEEN #01/01/2026# AND #02/28/2026#",
+    "FilterZweiOriginal": "IN (4, 5, 6, 7, 8)",
+    "FilterDreiOriginal": "= 699",
+    "FilterVierOriginal": "",
+    "FilterFuenfOriginal": "",
+
+    "SachbearbeiterID": 0,
+    "LL_RepBezeichnung": ""
+  },
+
+  {
+    "id": "vorgaenge_menge_summiert_kg99",
+    "kategorie": "Aufträge",
+    "abfrageBezeichnung": "Vorgänge – Menge summiert (Kundengruppe 99)",
+    "abfrageBeschreibung": "Wie oben, aber Filter 3 verwendet die Kundengruppe.",
+    "sql": "SELECT\n    tblAdressen.Kundengruppe,\n    tblAufpos.Zeile1,\n    tblAufpos.Zeile2,\n    tblAufpos.Zeile3,\n    tblAufpos.Zeile4,\n    tblAufpos.Zeile5,\n    tblAufpos.Zeile6,\n    SUM(tblAufpos.Menge) AS SummeMenge\nFROM\n    (tblAufkopf\n        INNER JOIN tblAufpos ON tblAufkopf.Intern = tblAufpos.Intern)\n    INNER JOIN tblAdressen ON tblAufkopf.Adresse = tblAdressen.Adresse\nWHERE\n    tblAufkopf.AktuellesDatumVorgang FilterEins\n    AND tblAufkopf.Bearbeitungsindex FilterZwei\n    AND tblAdressen.Kundengruppe FilterDrei\nGROUP BY\n    tblAdressen.Kundengruppe,\n    tblAufpos.Zeile1,\n    tblAufpos.Zeile2,\n    tblAufpos.Zeile3,\n    tblAufpos.Zeile4,\n    tblAufpos.Zeile5,\n    tblAufpos.Zeile6\nORDER BY\n    tblAdressen.Kundengruppe,\n    tblAufpos.Zeile1;\n/* Filter 3 hier als Kundengruppe. */",
+
+    "FilterEins": "BETWEEN #01/01/2026# AND #02/28/2026#",
+    "FilterZwei": "IN (4, 5, 6, 7, 8)",
+    "FilterDrei": "= 99",
+    "FilterVier": "",
+    "FilterFuenf": "",
+
+    "FilterEinsOriginal": "BETWEEN #01/01/2026# AND #02/28/2026#",
+    "FilterZweiOriginal": "IN (4, 5, 6, 7, 8)",
+    "FilterDreiOriginal": "= 99",
+    "FilterVierOriginal": "",
+    "FilterFuenfOriginal": "",
+
+    "SachbearbeiterID": 0,
+    "LL_RepBezeichnung": ""
   }
 ]
-``
