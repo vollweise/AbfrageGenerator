@@ -7,22 +7,10 @@
     "raw": "https://raw.githubusercontent.com/wollweise/AbfrageGenerator/main/sql/vorgaenge_menge_summiert.sql",
     "beschreibung": "Summiert Mengen nach Zeile1–6. Filter: Start/Ende (Datum), Kundengruppe.",
     "parameter": [
-      { "name": "FilterEins",  "typ": "date",   "label": "Startdatum" },
-      { "name": "FilterZwei",  "typ": "date",   "label": "Enddatum"   },
-      { "name": "FilterDrei",  "typ": "number", "label": "Kundengruppe", "default": "99" }
-    ]
-  },
-  {
-    "id": "vorgaenge_menge_summiert_adresse",
-    "titel": "Vorgänge – Menge summiert (Adresse)",
-    "kategorie": "Aufträge",
-    "version": "1.0.0",
-    "raw": "https://raw.githubusercontent.com/wollweise/AbfrageGenerator/main/sql/vorgaenge_menge_summiert_adresse.sql",
-    "beschreibung": "Wie oben, zusätzlich Filter auf Adresse.",
-    "parameter": [
-      { "name": "FilterEins",  "typ": "date",   "label": "Startdatum" },
-      { "name": "FilterZwei",  "typ": "date",   "label": "Enddatum"   },
-      { "name": "FilterDrei",  "typ": "number", "label": "Adresse", "default": "699" }
+      "FilterEins",
+      "FilterZwei",
+      { "name": "FilterDrei", "typ": "number", "label": "Kundengruppe", "default": "99" }
     ]
   }
 ]
+``
